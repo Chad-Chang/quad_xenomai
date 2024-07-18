@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1510</width>
+    <height>986</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>-20</x>
+      <y>-110</y>
+      <width>1871</width>
+      <height>1131</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <property name="usesScrollButtons">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="initialize_2">
+     <attribute name="title">
+      <string>INITIALIZE</string>
+     </attribute>
+     <widget class="QCheckBox" name="checkBox_2">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>100</y>
+        <width>151</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Elmo Enabled</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>60</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>CHECK</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>750</x>
+        <y>50</y>
+        <width>221</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>21</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:700;&quot;&gt;Mode of operation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QTabWidget" name="Control_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>90</y>
+        <width>2100</width>
+        <height>1831</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0);
+
+font: 12pt &quot;Times new roman&quot;;
+color: white</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="Graph_2">
+       <property name="styleSheet">
+        <string notr="true">selection-background-color:rgn(rgb(0, 0, 0));
+font: 12pt &quot;Times new roman&quot;</string>
+       </property>
+       <attribute name="title">
+        <string>Graph</string>
+       </attribute>
+       <widget class="QLabel" name="label_12">
+        <property name="geometry">
+         <rect>
+          <x>860</x>
+          <y>30</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Rear Left Leg</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RL_r_plot_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>760</x>
+          <y>70</y>
+          <width>281</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RL_r_autoscale_2">
+        <property name="geometry">
+         <rect>
+          <x>950</x>
+          <y>270</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RL_current_autoscale_2">
+        <property name="geometry">
+         <rect>
+          <x>940</x>
+          <y>750</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RL_current_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>760</x>
+          <y>550</y>
+          <width>271</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RR_r_plot_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1090</x>
+          <y>70</y>
+          <width>281</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_21">
+        <property name="geometry">
+         <rect>
+          <x>1180</x>
+          <y>30</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Rear Right Leg</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RR_r_autoscale_2">
+        <property name="geometry">
+         <rect>
+          <x>1280</x>
+          <y>270</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FL_r_plot_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>70</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_22">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>30</y>
+          <width>111</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Front Right Leg</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FR_r_plot_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>70</y>
+          <width>281</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_24">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>30</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Front Left Leg</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FL_r_autoscale_2">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>270</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FR_r_autoscale_2">
+        <property name="geometry">
+         <rect>
+          <x>620</x>
+          <y>270</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RL_th_autoscale_2">
+        <property name="geometry">
+         <rect>
+          <x>950</x>
+          <y>510</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RL_th_plot_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>760</x>
+          <y>310</y>
+          <width>281</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FL_th_plot_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>310</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FL_th_autoscale_2">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>510</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FR_th_plot_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>310</y>
+          <width>281</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FR_th_autoscale_2">
+        <property name="geometry">
+         <rect>
+          <x>620</x>
+          <y>510</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RR_th_plot_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1090</x>
+          <y>310</y>
+          <width>281</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RR_th_autoscale_2">
+        <property name="geometry">
+         <rect>
+          <x>1280</x>
+          <y>510</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FR_current_autoscale_2">
+        <property name="geometry">
+         <rect>
+          <x>620</x>
+          <y>750</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FR_current_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>550</y>
+          <width>281</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FL_current_autoscale_2">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>750</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RR_current_autoscale_2">
+        <property name="geometry">
+         <rect>
+          <x>1280</x>
+          <y>750</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RR_current_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1090</x>
+          <y>550</y>
+          <width>281</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="Select_data_3">
+        <property name="geometry">
+         <rect>
+          <x>1550</x>
+          <y>80</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(55, 45, 55);</string>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>Position</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Velocity</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_25">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>380</y>
+          <width>61</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt;θ&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-style:italic; vertical-align:sub;&quot;&gt;r&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt; Data&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FL_current_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>550</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_26">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>620</y>
+          <width>61</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt;Others&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_27">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>130</y>
+          <width>61</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt;r Data&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_28">
+        <property name="geometry">
+         <rect>
+          <x>1420</x>
+          <y>90</y>
+          <width>111</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select Data (&lt;span style=&quot; font-style:italic;&quot;&gt;r,θ&lt;/span&gt;)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_29">
+        <property name="geometry">
+         <rect>
+          <x>1400</x>
+          <y>140</y>
+          <width>131</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select Data (&lt;span style=&quot; font-style:italic;&quot;&gt;Others&lt;/span&gt;)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="Select_data_4">
+        <property name="geometry">
+         <rect>
+          <x>1550</x>
+          <y>130</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(55, 45, 55);</string>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>Current</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>d hat</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>RWFOB</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_30">
+        <property name="geometry">
+         <rect>
+          <x>1360</x>
+          <y>20</y>
+          <width>81</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 0);</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Reference&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_31">
+        <property name="geometry">
+         <rect>
+          <x>1360</x>
+          <y>40</y>
+          <width>81</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Actual&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Mode_Select_2">
+     <attribute name="title">
+      <string>MODE SELECT</string>
+     </attribute>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1510</width>
+     <height>19</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header location="global">qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
