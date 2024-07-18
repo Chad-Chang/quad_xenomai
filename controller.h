@@ -10,6 +10,8 @@ class Controller
 {
 private:
   // PID //
+  double Ts = 0.0001;
+
   Vector4d RW_r_posPgain; // FL FR RL RR leg
   Vector4d RW_r_posIgain;
   Vector4d RW_r_posDgain;
@@ -30,9 +32,6 @@ private:
   Vector4d RW_th_velDgain;
   Vector4d RW_th_velD_cutoff;
 
-  Vector2d PID_output;
-  double cutoff_freq_pos = 150; 
-  double cutoff_freq_vel = 150;
   double cutoff_freq = 150; 
 
   // Using in Function
@@ -40,10 +39,22 @@ private:
   double I_term[2][2];
   double D_term[2][2];
   double kp; double ki; double kd;
-  double kp_pos; double ki_pos; double kd_pos;
-  double kp_vel; double ki_vel; double kd_vel;
-  Vector2d error;
-  Vector2d error_old;
+
+
+  // DOB
+  Vector2d rhs_dob;
+  Vector2d lhs_dob;
+  Matrix2d T_dob; // old값 setting 할려고 두개로 만듬
+  Matrix2d tauDist_hat; // old값 초기화 해줘야함
+
+  Vector2d rhs_fob;
+  Vector2d lhs_fob;
+  Vector2d T_fob; // old값 setting 할려고 두개로 만듬
+  Vector2d tauExt_hat[2]; // old값 초기화 해줘야함
+  double forceExt_hat[3]; // old값 초기화 해줘야함
+
+  // admittance
+  double deltaPos[3];
 
 public:
   Controller();
@@ -53,8 +64,21 @@ public:
   void Mutex_exchange();
 
   // feedback control //;
-  double pid(Vector2d posRW_err, Vector2d posRW_err_old, Vector2d velRW_err, Vector2d velRW_err_old, int r0th1, int Leg_num, int mode); // idx:  r(=0), th(=1)중 어떤 state의 PD control?
-  Vector2d velPID();                                                                 // Leg_num: FL-0 FR-1 RL-2 RR-3
+  double pid(Vector2d posRW_err, Vector2d posRW_err_old, int r0th1, int Leg_num, int mode); // idx:  r(=0), th(=1)중 어떤 state의 PD control?
+  Vector2d velPID();
+  
+  // DOB
+  Vector2d DOBRW(Vector2d DOB_output,Matrix2d Lamda_nominal_DOB,double acc_m,double acc_b ,double cut_off ,int flag);//flag 대신 of/off
+  void DOBinitial();
+
+  // FOB
+  void FOBRW(Vector2d DOB_output,Matrix2d Lamda_nominal_FOB,Matrix2d JacobianTrans,double acc_m,double acc_b ,double cut_off ,int flag);//flag 대신 of/off                                                       
+  void FOBinitial();
+
+  // admittance
+  double admittance(double omega_n, double zeta, double k);
+
+  void init();
 
   double get_posPgain(int Leg_num, int r0th1);
   double get_posIgain(int Leg_num, int r0th1);

@@ -11,7 +11,7 @@ int         _M_Ecat_expectedWKC = 0;    //Working Counter which is expected.
 uint16_t    _M_STATUSWORD[NUMOFSLAVES];
 int8_t      _M_MODE_OF_OPERATION_DISPLAY[NUMOFSLAVES];
 
-int8_t     _M_MODE_OF_OPERATION[NUMOFSLAVES];
+int8_t      _M_MODE_OF_OPERATION[NUMOFSLAVES];
 uint16_t    _M_CONTROLWORD[NUMOFSLAVES];
 
 using std:: vector;
@@ -70,8 +70,6 @@ Vector4d _M_RW_th_velPgain;
 Vector4d _M_RW_th_velDgain;
 Vector4d _M_RW_th_velD_cutoff;
 
-double _M_Homming_input[NUMOFSLAVES];
-double _M_Motor_pos_init[NUMOFSLAVES];
 
 
 
@@ -81,14 +79,7 @@ int timeout_ns;
 QTimer *tim;
 
 //////////// Flag ////////////
-int _M_Traj_ON;
-bool _M_Ctrl_on;
-int _M_ctrl_mode;
+int _M_traj_ON;
 bool _M_Enc_init;
-
-bool _M_Homming_checked = false;
-bool _M_Homming_clicked = false;
-bool _M_DataLog_flag = false;
-bool _M_stop;
-
+int _M_ctrl_mode;
 

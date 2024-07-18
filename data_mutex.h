@@ -7,7 +7,7 @@
 #include <cstdint>
 #include <inttypes.h>
 #include <pthread.h>
-#include <qcustomplot.h>
+#include <qcustomplot.h>>
 #include <stdio.h>
 #include <unistd.h>
 #include <vector>
@@ -17,8 +17,8 @@ using namespace Eigen;
 using std::vector;
 using namespace std;
 
-#define NUMOFSLAVES 14 // Number of elmo slaves
-#define NUMOF_GTWI_SLAVES 14
+#define NUMOFSLAVES 12 // Number of elmo slaves
+#define NUMOF_GTWI_SLAVES 12
 #define NUMOF_PTWI_SLAVES 0
 #define PI	(3.14159265359)
 #define NUMOFLEGS 4
@@ -90,20 +90,12 @@ extern Vector4d _M_RW_th_velPgain;
 extern Vector4d _M_RW_th_velDgain;
 extern Vector4d _M_RW_th_velD_cutoff;
 
-extern double _M_Homming_input[NUMOFSLAVES];
-extern double _M_Motor_pos_init[NUMOFSLAVES];
 extern double _M_actual_current[NUMOFSLAVES];
 
 //// Flag ////
 
-extern int _M_Traj_ON;
-extern bool _M_Ctrl_on;
-extern int _M_ctrl_mode; // control mode
+extern int _M_traj_ON;
 extern bool _M_Enc_init;
-extern bool _M_Homming_checked;
-extern bool _M_Homming_clicked;
-extern bool _M_DataLog_flag;
-extern bool _M_stop;
-
+extern int _M_ctrl_mode; // control mode
 
 #endif // DATA_MUTEX_H

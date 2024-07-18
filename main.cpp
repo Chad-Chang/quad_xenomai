@@ -58,16 +58,14 @@
 //Have to write includes in CMakeLists.txt in order to fully
 //include personal headers.
 
-#include <data_logging.h>
 #include <actuator.h>
 #include <controller.h>
-//#include <data_exchange_mutex.h>
+#include <data_exchange_mutex.h>
 #include <data_mutex.h>
 #include <ecat_func.h>
 #include <ethercat.h>
 #include <filter.h>
 #include <kinematics.h>
-#include <trajectory.h>
 #include <qcustomplot.h>
 
 
@@ -138,12 +136,6 @@ static void *realtime_thread(void *arg); //RT thread
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////* Class declaration *//////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-MainWindow* w;
-Controlwindow* c;
-
-data_logging* Logging;
-
-trajectory traj;
 
 Controller C_FL;
 Controller C_FR;
@@ -169,11 +161,18 @@ Vector2d RL_output;
 Vector2d RR_output;
 
 // motor control input
-Vector2d FL_control_input;
-Vector2d FR_control_input;
-Vector2d RL_control_input;
-Vector2d RR_control_input;
+Vector2d FL_PID_output;
+Vector2d FR_PID_output;
+Vector2d RL_PID_output;
+Vector2d RR_PID_output;
 
+
+
+
+//  actuator configuration: HAA, HIP, KNEE
+Actuator ACT_RLHAA(5, 0);
+Actuator ACT_RLHIP(4, 0.546812);
+Actuator ACT_RLKNEE(3, 2.59478);
 
 // modification please
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -181,13 +180,8 @@ Vector2d RR_control_input;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //Actuator actuator(motor_num, init_position);
 
-//  actuator configuration: HAA, HIP, KNEE
-Actuator ACT_RLHAA(5, 0);
-Actuator ACT_RLHIP(4, 0.546812);
-Actuator ACT_RLKNEE(3, 2.59478);
-
 Actuator ACT_RRHAA(0, 0);
-Actuator ACT_RRHIP(1, 0.546812);  
+Actuator ACT_RRHIP(1, 0.546812);
 Actuator ACT_RRKNEE(2, 2.59478);
 
 Actuator ACT_FRHAA(9, 0);
@@ -211,28 +205,19 @@ Kinematics K_RR;
 ///////////////////////////////////* Variable declaration *////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-double constant = 1000000.0 / (Torque_constant*Gear_ratio * 45000);
+
 int t = 0;
 /**************trajecotry time for each legs**************/
 int traj_t = 0;
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////* Flag *//////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
 
-bool Traj_on = false;// 0 before initialized -> temporal stop flag
-bool Homming = false;
-bool Ctrl_on = false;
-bool stop = false;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////* Mode selcetion*//////////////////////////////////////////////
+/////////////////////////////////////* Safety button*//////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-
+bool button_start = 0;// 0 before initialized -> temporal stop flag
 int ctrl_mode = 0;
 
-// Homming
-double* Homming_input;
 
 // posRW
 Vector2d posRW_FL;
@@ -267,7 +252,31 @@ Vector2d velRW_err_old_FR;
 Vector2d velRW_err_old_RL;
 Vector2d velRW_err_old_RR;
 
+//RWDOB  
+Vector2d FL_DOB_output; // 초기값 0으로 setting  해줘야함
+Vector2d FR_DOB_output;
+Vector2d RL_DOB_output;
+Vector2d RR_DOB_output;
 
+void initialize()
+{
+    FL_DOB_output << 0, 0;
+    FR_DOB_output << 0, 0;
+    RL_DOB_output << 0, 0;
+    RR_DOB_output << 0, 0;
+
+    posRW_err_old_FL << 0, 0;
+    posRW_err_old_FR << 0, 0;
+    posRW_err_old_RL << 0, 0;
+    posRW_err_old_RR << 0, 0;
+
+    velRW_err_old_FL << 0, 0;
+    velRW_err_old_FR << 0, 0;
+    velRW_err_old_RL << 0, 0;
+    velRW_err_old_RR << 0, 0;
+
+
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -323,13 +332,11 @@ int main(int argc, char *argv[]) {
   pthread_attr_destroy(&rtattr); // delete pthread attribute union
 
   QApplication a(argc, argv);
-  w = new MainWindow;
-  c = new Controlwindow;
-  Logging = new data_logging(c);
-  
-  
-  w->show();
-  c->show();
+  MainWindow w;
+  Controlwindow c;
+
+  w.show();
+  c.show();
   
 
   ret = a.exec();      // Execute the mainwindow thread and return when GUI is terminated
@@ -500,6 +507,7 @@ static void *realtime_thread(void *arg)
     usleep(1000);
 
 ///////////////////////////////////////* REALTIME LOOP */////////////////////////////////////
+    initialize();
 
     while(!sigRTthreadKill)
     {
@@ -619,22 +627,17 @@ static void *realtime_thread(void *arg)
         K_RL.pos_trajectory(traj_t, 2); // traj_t3 will be updated in the function
         K_RR.pos_trajectory(traj_t, 3); // traj_t4 will be updated in the function
         
-        if(Traj_on) // button stop -> stop time temporally, 
+        if(button_start) // button stop -> stop time temporally, 
           traj_t += 1 ; 
           
         /****************** State ******************/ // pos RW
         
-        posRW_FL = K_FL.get_posRW(); // function의 마지막 input이 0이면 현재 값, 1이면 이전 값
-        posRW_FR = K_FR.get_posRW();
-        posRW_RL = K_RL.get_posRW();
-        posRW_RR = K_RR.get_posRW();
+        posRW_FL = K_FL.get_posRW() + C_FL.admittance(30,1,5000); // function의 마지막 input이 0이면 현재 값, 1이면 이전 값
+        posRW_FR = K_FR.get_posRW() + C_FR.admittance(30,1,5000);
+        posRW_RL = K_RL.get_posRW() + C_RL.admittance(30,1,5000);
+        posRW_RR = K_RR.get_posRW() + C_RR.admittance(30,1,5000);
         
-        velRW_FL = K_FL.get_velRW();
-        velRW_FR = K_FR.get_velRW();
-        velRW_RL = K_RL.get_velRW();
-        velRW_RR = K_RR.get_velRW();
-        
-        
+//        velRW_FL = K_FL.get_velRW();
         
         
         
@@ -644,11 +647,6 @@ static void *realtime_thread(void *arg)
         posRW_err_RL = K_RL.get_posRW_error(0);
         posRW_err_RR = K_RR.get_posRW_error(0);
         
-        velRW_err_FL = K_FL.get_velRW_error(0);
-        velRW_err_FR = K_FR.get_velRW_error(0);
-        velRW_err_RL = K_RL.get_velRW_error(0);
-        velRW_err_RR = K_RR.get_velRW_error(0);
-        
         
         /****************** State error old******************/ // index 0: curr error/ index 1 : old error
         posRW_err_old_FL = K_FL.get_posRW_error(1);
@@ -656,34 +654,25 @@ static void *realtime_thread(void *arg)
         posRW_err_old_RL = K_RL.get_posRW_error(1);
         posRW_err_old_RR = K_RR.get_posRW_error(1);
         
-        velRW_err_old_FL = K_FL.get_velRW_error(1);
-        velRW_err_old_FR = K_FR.get_velRW_error(1);
-        velRW_err_old_RL = K_RL.get_velRW_error(1);
-        velRW_err_old_RR = K_RR.get_velRW_error(1);
+//        cout << "posRW_err_FL :" << posRW_err_FL[0] << endl;
+//        cout << "posRW_err_RR :" << posRW_err_RR[0] << endl;
+//        cout << "posRW_err_old_FL :" << posRW_err_old_FL[0] << endl;
+//        cout << "posRW_err_old_RR :" << posRW_err_old_RR[0] << endl;
+
 
         /****************** Conrtoller ******************/ // index [0] : R direction output, index [1] : th direction output
-        if(Ctrl_on == true){
-          FL_output[0] = C_FL.pid(posRW_err_FL, posRW_err_old_FL, velRW_err_FL, velRW_err_old_FL, 0, 0, ctrl_mode); //ctrl_mode = 0 -> pos control
-          FL_output[1] = C_FL.pid(posRW_err_FL, posRW_err_old_FL, velRW_err_FL, velRW_err_old_FL, 1, 0, ctrl_mode); //ctrl_mode = 1 -> vel control
+        FL_output[0] = C_FL.pid(posRW_err_FL, posRW_err_old_FL, 0, 0,ctrl_mode);
+        FL_output[1] = C_FL.pid(posRW_err_FL, posRW_err_old_FL, 1, 0,ctrl_mode);
         
-          FR_output[0] = C_FR.pid(posRW_err_FR, posRW_err_old_FR, velRW_err_FR, velRW_err_old_FR, 0, 1, ctrl_mode);
-          FR_output[1] = C_FR.pid(posRW_err_FR, posRW_err_old_FR, velRW_err_FR, velRW_err_old_FR, 1, 1, ctrl_mode);
+        FR_output[0] = C_FR.pid(posRW_err_FR, posRW_err_old_FR, 0, 1,ctrl_mode);
+        FR_output[1] = C_FR.pid(posRW_err_FR, posRW_err_old_FR, 1, 1,ctrl_mode);
 
-          RL_output[0] = C_RL.pid(posRW_err_RL, posRW_err_old_RL, velRW_err_RL, velRW_err_old_RL, 0, 2, ctrl_mode); // R direction output
-          RL_output[1] = C_RL.pid(posRW_err_RL, posRW_err_old_RL, velRW_err_RL, velRW_err_old_RL, 1, 2, ctrl_mode); // th direction output
+        RL_output[0] = C_RL.pid(posRW_err_RL, posRW_err_old_RL, 0, 2,ctrl_mode); // R direction output
+        RL_output[1] = C_RL.pid(posRW_err_RL, posRW_err_old_RL, 1, 2,ctrl_mode); // th direction output
                 
-          RR_output[0] = C_RR.pid(posRW_err_RR, posRW_err_old_RR, velRW_err_RR, velRW_err_old_RR, 0, 3, ctrl_mode);
-          RR_output[1] = C_RR.pid(posRW_err_RR, posRW_err_old_RR, velRW_err_RR, velRW_err_old_RR, 1, 3, ctrl_mode);
-        }
-        else{
-        for(int i = 0; i < 2; i++)
-          {
-            FL_output[i] = 0;
-            FR_output[i] = 0;
-            RL_output[i] = 0;
-            RR_output[i] = 0;
-          } 
-        }
+        RR_output[0] = C_RR.pid(posRW_err_RR, posRW_err_old_RR, 0, 3,ctrl_mode);
+        RR_output[1] = C_RR.pid(posRW_err_RR, posRW_err_old_RR, 1, 3,ctrl_mode);
+        
         
 //******************************* the problem origin****************************
 //        cout << "FL_output[0] :" << FL_output[0] << endl;
@@ -695,29 +684,33 @@ static void *realtime_thread(void *arg)
         
         /****************** Put the torque in Motor ******************/
         
-        FL_control_input = JTrans_FL * FL_output;
-        FR_control_input = JTrans_FR * FR_output;
-        RL_control_input = JTrans_RL * RL_output;
-        RR_control_input = JTrans_RR * RR_output;
+        FL_PID_output = JTrans_FL * FL_output;
+        FR_PID_output = JTrans_FR * FR_output;
+        RL_PID_output = JTrans_RL * RL_output;
+        RR_PID_output = JTrans_RR * RR_output;
 
-        Homming_input = traj.homming();
-        
+        // 나중에 이름 고치기. FL_DOT_output 초기값 setting 해줘야함
+        FL_DOB_output = FL_PID_output + C_FL.DOBRW(FL_DOB_output, K_FL.get_Lamda_nominal_DOB(),ACT_FLHIP.getMotor_acc(), ACT_FLKNEE.getMotor_acc(), 150, 1);
+        FR_DOB_output = FR_PID_output + C_FR.DOBRW(FR_DOB_output, K_FR.get_Lamda_nominal_DOB(), ACT_FRHIP.getMotor_acc(), ACT_FRKNEE.getMotor_acc(), 150, 1);
+        RL_DOB_output = RL_PID_output + C_RL.DOBRW(RL_DOB_output, K_RL.get_Lamda_nominal_DOB(), ACT_RLHIP.getMotor_acc(), ACT_RLKNEE.getMotor_acc(), 150, 1);
+        RR_DOB_output = RR_PID_output + C_RR.DOBRW(RR_DOB_output, K_RR.get_Lamda_nominal_DOB(), ACT_RRHIP.getMotor_acc(), ACT_RRKNEE.getMotor_acc(), 150, 1);
+
+        C_FL.FOBRW(FL_DOB_output, K_FL.get_Lamda_nominal_FOB(),K_FL.get_RW_Jacobian_Trans() ,ACT_FLHIP.getMotor_acc(), ACT_FLKNEE.getMotor_acc(), 150, 1);
+        C_FR.FOBRW(FR_DOB_output, K_FR.get_Lamda_nominal_FOB(),K_FR.get_RW_Jacobian_Trans() ,ACT_FRHIP.getMotor_acc(), ACT_FRKNEE.getMotor_acc(), 150, 1);
+        C_RL.FOBRW(RL_DOB_output, K_RL.get_Lamda_nominal_FOB(),K_RL.get_RW_Jacobian_Trans() ,ACT_RLHIP.getMotor_acc(), ACT_RLKNEE.getMotor_acc(), 150, 1);
+        C_RR.FOBRW(RR_DOB_output, K_RR.get_Lamda_nominal_FOB(),K_RR.get_RW_Jacobian_Trans() ,ACT_RRHIP.getMotor_acc(), ACT_RRKNEE.getMotor_acc(), 150, 1);
+
         /****************** Mutex exchange ******************/
         C_FL.Mutex_exchange();
         C_FR.Mutex_exchange();
         C_RL.Mutex_exchange();
-        C_RR.Mutex_exchange();  
+        C_RR.Mutex_exchange();
         
         
         K_FL.exchange_mutex(0);
         K_FR.exchange_mutex(1);
         K_RL.exchange_mutex(2);
         K_RR.exchange_mutex(3);
-        
-        ACT_FLHAA.exchange_mutex();
-        ACT_FRHAA.exchange_mutex();
-        ACT_RLHAA.exchange_mutex();
-        ACT_RRHAA.exchange_mutex();
         
         ACT_FLHIP.exchange_mutex();
         ACT_FRHIP.exchange_mutex();
@@ -731,6 +724,20 @@ static void *realtime_thread(void *arg)
         
         
         
+        
+//        knee_pos = ACT_RRKNEE.getMotor_pos();
+//        if(t == 1 )
+//        {
+//          offset = knee_pos;
+//        }
+        
+//        knee_pos_error = 0.0001*traj_t- knee_pos;// - (knee_pos - offset);
+//        printf("t = %d\n",t);
+//        if(a == 1 )
+//        {
+//          cout <<"nee "<< knee_pos << endl;
+//          cout <<"nee_err "<< knee_pos_error << endl;
+//        }
         
                 /****************** actuator Data send to ELMO ******************/
         
@@ -753,25 +760,8 @@ static void *realtime_thread(void *arg)
         // 11-6. Sync data with GUI thread
 
         
-        if (stop == true)
-        {
-          for(int i = 0; i < 2; i++){
-          FL_control_input[i] = 0;
-          FR_control_input[i] = 0;
-          RL_control_input[i] = 0;
-          RR_control_input[i] = 0;
-          }
-        }        
-        
-        
-        //// Data Logging ////
-        Logging->data_log();
-        
         if(!pthread_mutex_trylock(&data_mut))
-        {   
-            
-            traj.exchagne_mutex();
-            Logging->exchange_mutex();
+        {
             _M_sampling_time_ms = sampling_ms; //when the thread get the mutex, write data into shared global variables
             _M_overrun_cnt = overrun;
 
@@ -779,50 +769,27 @@ static void *realtime_thread(void *arg)
             _M_Ecat_expectedWKC = expectedWKC;
             
             /****************** Motor Torque ******************/
-              if(!Homming)
-              {
-              _M_motor_torque[0] = 0; //constant*0.5;
-              _M_motor_torque[1] = RR_control_input[0]*constant;
-              _M_motor_torque[2] = -RR_control_input[1]*constant;
-              
 
-              _M_motor_torque[5] = 0; //constant*0.5;
-              _M_motor_torque[4] = RL_control_input[0]*constant;
-              _M_motor_torque[3] = RL_control_input[1]*constant;
+              _M_motor_torque[0] = 0;
+              _M_motor_torque[1] = RR_control_input[0]*1000000.0 / (Torque_constant*Gear_ratio * 45000);
+              _M_motor_torque[2] = -RR_control_input[1]*1000000.0 / (Torque_constant*Gear_ratio * 45000);
+              
+//              _M_motor_torque[2] = (20*knee_pos_error)*1000000.0 / (Torque_constant*Gear_ratio * 45000);
+              _M_motor_torque[5] = 0;
+              _M_motor_torque[4] = RL_control_input[0]*1000000.0 / (Torque_constant*Gear_ratio * 45000);
+              _M_motor_torque[3] = RL_control_input[1]*1000000.0 / (Torque_constant*Gear_ratio * 45000);
              
-              _M_motor_torque[6] = 0; //constant*0.5;
-              _M_motor_torque[7] = FL_control_input[0]*constant;
-              _M_motor_torque[8] = FL_control_input[1]*constant;
+              _M_motor_torque[6] = 0;
+              _M_motor_torque[7] = FL_control_input[0]*1000000.0 / (Torque_constant*Gear_ratio * 45000);
+              _M_motor_torque[8] = FL_control_input[1]*1000000.0 / (Torque_constant*Gear_ratio * 45000);
               
-              _M_motor_torque[9] = 0; //constant*0.5;
-              _M_motor_torque[10] = -FR_control_input[0]*constant;
-              _M_motor_torque[11] = -FR_control_input[1]*constant;
-              }
-              
-              else
-              {
-                                
-                for(int i = 0; i < NUMOFSLAVES; i++)
-                { 
-//                  if(i == 0 || i == 5 || i == 6 || i == 9)
-//                  _M_motor_torque[i] = Homming_input[i]*constant * 0.5;
-//                  else
-//                  _M_motor_torque[i] = Homming_input[i]*constant ;
-                }
-                  
-                
-              }
-              
-            /*********************** Flag **********************/  
-            Homming = _M_Homming_checked;
-            Traj_on = _M_Traj_ON; // temp_stop pressed 
-            stop = _M_stop;   
-            
-                    
-            /***************** Mode selection ******************/
+              _M_motor_torque[9] = 0;
+              _M_motor_torque[10] = -FR_control_input[0]*1000000.0 / (Torque_constant*Gear_ratio * 45000);
+              _M_motor_torque[11] = -FR_control_input[1]*1000000.0 / (Torque_constant*Gear_ratio * 45000);
+                        
+            /****************** Safety button ******************/
+            button_start = _M_traj_ON; // temp_stop pressed
             ctrl_mode = _M_ctrl_mode;
-            
-            /********************* Homming *********************/
  
             pthread_mutex_unlock(&data_mut);
         }
