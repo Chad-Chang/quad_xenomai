@@ -1,32 +1,3 @@
-////////////////////////////////////////////////
-///Title: RT_Master_Bimanipulator_Platinum_v1 - main.cpp
-///Functions: Multislave+Anybus
-///Author: Copyright (C) 2022- Taehoon Kim
-///Date: 2022.09.01
-///Finished: 2022.09.02
-////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////* INDEX *//////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////*
-
-/// 1. INCLUDE
-/// 2. MUTEX VARIABLE
-/// 3. SETUP FOR RT THREAD
-/// 4. DEFINITION FOR SOEM
-/// 5. FUNCTION & VARIABLES DECLARATION
-/// 6. MAIN FUNCTION
-/// 7. FUNCTION DEFINITION
-///     1) clean up
-///     2) realtime_thread
-///         (1) Parameter settingFound
-///         (2) EherCAT MASTER
-///         (3) Realtime loop
-///             - Control loop
-
-
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////* INCLUDE */////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -189,6 +160,10 @@ Matrix2f DOB_Lambda_RL; Matrix2f DOB_Lambda_RR;
 Matrix2f FOB_Lambda_FL; Matrix2f FOB_Lambda_FR; 
 Matrix2f FOB_Lambda_RL; Matrix2f FOB_Lambda_RR;
 
+double admit_pos[4] ;
+// admittance 파라미터
+double wn=20; double zeta=1; double k=30000; 
+
 //========================================================== 
 
 //========================================================== 
@@ -241,6 +216,7 @@ MatrixXf leg_RWvel_err_old(2,4);
 Vector2d disturbance; 
 
 MatrixXf leg_d_hat(2,4);
+MatrixXf leg_r_force_hat(2,4);
 
 // lhs_DOB 
 MatrixXf DOB_taubi_lhs(2,4); // col : 0~4 = FL FR RL RR
@@ -605,21 +581,15 @@ static void *realtime_thread(void *arg)
         JT_inv_FL = leg_kinematics[0].get_RW_Jacobian_Trans(); JT_inv_FR = leg_kinematics[1].get_RW_Jacobian_Trans();
         JT_inv_RL = leg_kinematics[2].get_RW_Jacobian_Trans(); JT_inv_RR = leg_kinematics[3].get_RW_Jacobian_Trans();
         
-
-        /****************** Trajectory ******************/
-        for(int i = 0 ; i < 4; i++)
-        {
-          leg_kinematics[i].pos_trajectory(traj_t,i); 
-        }
-        if(Traj_on) // button stop -> stop time temporally, 
-          traj_t += 1 ; 
-          
-        /****************** State ******************/ // pos RW
+        
        for(int i = 0 ; i < 4; i++)
         {
-          leg_RWpos.col(i) = leg_kinematics[i].get_posRW();
-          leg_RWvel.col(i) = leg_kinematics[i].get_velRW();
+            leg_kinematics[i].pos_trajectory(traj_t,i); 
+            leg_RWpos.col(i) = leg_kinematics[i].get_posRW();
+            leg_RWvel.col(i) = leg_kinematics[i].get_velRW();
         }
+        if(Traj_on) // button stop -> stop time temporally, 
+            traj_t += 1 ; 
         
         /****************** State error ******************/ // index 0: curr error/ index 1 : old error
         if(trajectory_test) // trajectory test - simple test
@@ -659,12 +629,21 @@ static void *realtime_thread(void *arg)
                 leg_d_hat.col(1) = leg_controller[1].DOBRW(leg_RWpid_output.col(1),DOB_Lambda_FR, leg_motor_acc.col(1),150,1);
                 leg_d_hat.col(2) = leg_controller[2].DOBRW(leg_RWpid_output.col(2),DOB_Lambda_RL, leg_motor_acc.col(2),150,1);
                 leg_d_hat.col(3) = leg_controller[3].DOBRW(leg_RWpid_output.col(3),DOB_Lambda_RR, leg_motor_acc.col(3),150,1);
+
+                leg_controller[0].FOBRW(leg_RWpid_output.col(0),FOB_Lambda_FL, leg_motor_acc.col(0),150,1);
+                leg_controller[1].FOBRW(leg_RWpid_output.col(1),FOB_Lambda_FR, leg_motor_acc.col(1),150,1);
+                leg_controller[2].FOBRW(leg_RWpid_output.col(2),FOB_Lambda_RL, leg_motor_acc.col(2),150,1);
+                leg_controller[3].FOBRW(leg_RWpid_output.col(3),FOB_Lambda_RR, leg_motor_acc.col(3),150,1);
+
+
             }
             for(int i = 0 ; i< 4 ; i++ )
             {
                 //ctrl_mode = 0 -> pos control //ctrl_mode = 1 -> vel control
                 leg_RWpid_output.col(i)(0) = leg_controller[i].pid(leg_RWpos_err.col(i), leg_RWpos_err_old.col(i), leg_RWvel_err.col(i), leg_RWvel_err_old.col(i),0,i,ctrl_mode) + leg_d_hat.col(i)(0); //  index : 0 = r pid 
                 leg_RWpid_output.col(i)(1) = leg_controller[i].pid(leg_RWpos_err.col(i), leg_RWpos_err_old.col(i), leg_RWvel_err.col(i), leg_RWvel_err_old.col(i),1,i,ctrl_mode) + leg_d_hat.col(i)(1); //  index : 0 = theta pid 
+                
+                admit_pos[i] = leg_controller[i].admittance(wn,zeta,k);
             }   
         }
         else // control model가 아닌 경우
@@ -798,7 +777,7 @@ static void *realtime_thread(void *arg)
             /***************** DOB clicked ******************/
             DOB_on = _M_DOB_on;
             admittance_on = _M_admittance_on;
-            
+
             pthread_mutex_unlock(&data_mut);
         }
         t2 = trt.tv_nsec;
