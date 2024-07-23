@@ -1,0 +1,2147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1510</width>
+    <height>986</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>-20</x>
+      <y>-110</y>
+      <width>1871</width>
+      <height>1131</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <property name="usesScrollButtons">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="initialize">
+     <attribute name="title">
+      <string>INITIALIZE</string>
+     </attribute>
+     <widget class="QCheckBox" name="checkBox">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>100</y>
+        <width>151</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Elmo Enabled</string>
+      </property>
+     </widget>
+     <widget class="QTabWidget" name="jnt5_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>2100</width>
+        <height>1831</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0);
+
+font: 12pt &quot;Times new roman&quot;;
+color: white</string>
+      </property>
+      <property name="currentIndex">
+       <number>3</number>
+      </property>
+      <widget class="QWidget" name="RW_pos_graph">
+       <property name="styleSheet">
+        <string notr="true">selection-background-color:rgn(rgb(0, 0, 0));
+font: 12pt &quot;Times new roman&quot;</string>
+       </property>
+       <attribute name="title">
+        <string>Graph</string>
+       </attribute>
+       <widget class="QLabel" name="label_10">
+        <property name="geometry">
+         <rect>
+          <x>860</x>
+          <y>30</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Rear Left Leg</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RL_r_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>760</x>
+          <y>70</y>
+          <width>281</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RL_r_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>950</x>
+          <y>270</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RL_current_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>940</x>
+          <y>750</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RL_current" native="true">
+        <property name="geometry">
+         <rect>
+          <x>760</x>
+          <y>550</y>
+          <width>271</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RR_r_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1090</x>
+          <y>70</y>
+          <width>281</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_11">
+        <property name="geometry">
+         <rect>
+          <x>1180</x>
+          <y>30</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Rear Right Leg</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RR_r_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>1280</x>
+          <y>270</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FL_r_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>70</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_13">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>30</y>
+          <width>111</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Front Right Leg</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FR_r_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>70</y>
+          <width>281</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_14">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>30</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Front Left Leg</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FL_r_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>270</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FR_r_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>620</x>
+          <y>270</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RL_th_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>950</x>
+          <y>510</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RL_th_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>760</x>
+          <y>310</y>
+          <width>281</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FL_th_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>310</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FL_th_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>510</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FR_th_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>310</y>
+          <width>281</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FR_th_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>620</x>
+          <y>510</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RR_th_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1090</x>
+          <y>310</y>
+          <width>281</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RR_th_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>1280</x>
+          <y>510</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FR_current_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>620</x>
+          <y>750</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FR_current" native="true">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>550</y>
+          <width>281</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FL_current_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>750</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RR_current_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>1280</x>
+          <y>750</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RR_current" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1090</x>
+          <y>550</y>
+          <width>281</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="Select_data">
+        <property name="geometry">
+         <rect>
+          <x>1550</x>
+          <y>80</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(55, 45, 55);</string>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>Position</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Velocity</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_15">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>380</y>
+          <width>61</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt;θ&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-style:italic; vertical-align:sub;&quot;&gt;r&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt; Data&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FL_current" native="true">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>550</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_16">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>620</y>
+          <width>61</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt;Others&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_17">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>130</y>
+          <width>61</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt;r Data&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_18">
+        <property name="geometry">
+         <rect>
+          <x>1420</x>
+          <y>90</y>
+          <width>111</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select Data (&lt;span style=&quot; font-style:italic;&quot;&gt;r,θ&lt;/span&gt;)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_19">
+        <property name="geometry">
+         <rect>
+          <x>1400</x>
+          <y>140</y>
+          <width>131</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select Data (&lt;span style=&quot; font-style:italic;&quot;&gt;Others&lt;/span&gt;)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="Select_data_2">
+        <property name="geometry">
+         <rect>
+          <x>1550</x>
+          <y>130</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(55, 45, 55);</string>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>Current</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>d hat</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>RWFOB</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_20">
+        <property name="geometry">
+         <rect>
+          <x>1360</x>
+          <y>20</y>
+          <width>81</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 0);</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Reference&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_23">
+        <property name="geometry">
+         <rect>
+          <x>1360</x>
+          <y>40</y>
+          <width>81</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Actual&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="RW_vel_graph">
+       <attribute name="title">
+        <string>Page</string>
+       </attribute>
+       <widget class="QCustomPlot" name="FL_vel_r_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>60</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="r_data">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>130</y>
+          <width>61</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt;r Data&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_22">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>30</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>FL_Leg_vel</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_21">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>390</y>
+          <width>61</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt;θ&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-style:italic; vertical-align:sub;&quot;&gt;r&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt; Data&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_24">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>630</y>
+          <width>61</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt;Others&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FL_vel_th_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>320</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FL_vel_input_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>570</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_25">
+        <property name="geometry">
+         <rect>
+          <x>570</x>
+          <y>20</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>FR_Leg_vel</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_26">
+        <property name="geometry">
+         <rect>
+          <x>890</x>
+          <y>20</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>RR_Leg_vel</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_27">
+        <property name="geometry">
+         <rect>
+          <x>1210</x>
+          <y>10</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>RL_Leg_vel</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FR_vel_r_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>60</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RR_vel_r_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>790</x>
+          <y>60</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FR_vel_th_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>320</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RR_vel_th_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>790</x>
+          <y>320</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FR_vel_input_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>570</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RR_vel_input_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>790</x>
+          <y>570</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RL_vel_r_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1120</x>
+          <y>60</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RL_vel_th_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1120</x>
+          <y>320</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="RL_vel_input_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1120</x>
+          <y>570</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FL_vel_r_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>260</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FR_vel_r_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>660</x>
+          <y>260</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RR_vel_r_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>990</x>
+          <y>260</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RL_vel_r_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>1310</x>
+          <y>260</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FL_vel_th_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>530</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FR_vel_r_autoscale_2">
+        <property name="geometry">
+         <rect>
+          <x>660</x>
+          <y>530</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RR_vel_th_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>990</x>
+          <y>530</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RL_vel_th_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>1310</x>
+          <y>520</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FL_vel_input_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>770</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FR_vel_input_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>660</x>
+          <y>780</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RR_vel_input_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>980</x>
+          <y>770</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RL_vel_input_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>1320</x>
+          <y>780</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Joint_graph">
+       <attribute name="title">
+        <string>Page</string>
+       </attribute>
+       <widget class="QCustomPlot" name="jnt0" native="true">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>50</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="jnt0_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>250</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="r_data_2">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>0</y>
+          <width>31</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;jnt0&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_28">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>10</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>FL_Leg</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="jnt1" native="true">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>320</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="r_data_3">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>270</y>
+          <width>31</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;jnt1&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="jnt1_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>530</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="jnt2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>610</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="jnt2_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>820</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="r_data_5">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>560</y>
+          <width>31</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;jnt2&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="r_data_4">
+        <property name="geometry">
+         <rect>
+          <x>480</x>
+          <y>270</y>
+          <width>31</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;jnt4&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="r_data_6">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>560</y>
+          <width>31</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;jnt5&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="jnt5_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>560</x>
+          <y>820</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="jnt3" native="true">
+        <property name="geometry">
+         <rect>
+          <x>360</x>
+          <y>50</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="jnt5" native="true">
+        <property name="geometry">
+         <rect>
+          <x>360</x>
+          <y>610</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="r_data_7">
+        <property name="geometry">
+         <rect>
+          <x>510</x>
+          <y>0</y>
+          <width>31</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;jnt3&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="jnt3_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>250</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="jnt4" native="true">
+        <property name="geometry">
+         <rect>
+          <x>360</x>
+          <y>320</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="jnt4_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>520</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_29">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>10</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>FR_Leg</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="r_data_8">
+        <property name="geometry">
+         <rect>
+          <x>800</x>
+          <y>270</y>
+          <width>31</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;jnt7&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="jnt10" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1000</x>
+          <y>320</y>
+          <width>261</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="r_data_9">
+        <property name="geometry">
+         <rect>
+          <x>1150</x>
+          <y>0</y>
+          <width>31</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;jnt9&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="r_data_10">
+        <property name="geometry">
+         <rect>
+          <x>780</x>
+          <y>560</y>
+          <width>31</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;jnt8&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="jnt8_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>870</x>
+          <y>820</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="jnt6" native="true">
+        <property name="geometry">
+         <rect>
+          <x>680</x>
+          <y>50</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="jnt8" native="true">
+        <property name="geometry">
+         <rect>
+          <x>680</x>
+          <y>610</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="jnt11_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>1170</x>
+          <y>810</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="jnt10_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>1170</x>
+          <y>520</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="r_data_11">
+        <property name="geometry">
+         <rect>
+          <x>810</x>
+          <y>0</y>
+          <width>31</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;jnt6&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="jnt6_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>840</x>
+          <y>250</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_30">
+        <property name="geometry">
+         <rect>
+          <x>1020</x>
+          <y>10</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>RL_Leg</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="jnt9_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>1160</x>
+          <y>250</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="r_data_12">
+        <property name="geometry">
+         <rect>
+          <x>1120</x>
+          <y>270</y>
+          <width>31</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;jnt10&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="jnt7" native="true">
+        <property name="geometry">
+         <rect>
+          <x>680</x>
+          <y>320</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="jnt7_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>870</x>
+          <y>530</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="r_data_13">
+        <property name="geometry">
+         <rect>
+          <x>1100</x>
+          <y>560</y>
+          <width>31</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;jnt11&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="jnt11" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1000</x>
+          <y>610</y>
+          <width>261</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_31">
+        <property name="geometry">
+         <rect>
+          <x>700</x>
+          <y>10</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>RR_Leg</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="jnt9" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1000</x>
+          <y>50</y>
+          <width>261</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="jnt12" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1280</x>
+          <y>50</y>
+          <width>241</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="jnt13" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1280</x>
+          <y>320</y>
+          <width>241</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FL_vel_r_plot_3" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1280</x>
+          <y>610</y>
+          <width>231</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="jnt12_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>1420</x>
+          <y>250</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="r_data_14">
+        <property name="geometry">
+         <rect>
+          <x>1410</x>
+          <y>0</y>
+          <width>31</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;jnt12&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="r_data_15">
+        <property name="geometry">
+         <rect>
+          <x>1410</x>
+          <y>280</y>
+          <width>31</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Times new roman</family>
+          <pointsize>12</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;jnt13&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="jnt11_autoscale_2">
+        <property name="geometry">
+         <rect>
+          <x>1420</x>
+          <y>810</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="jnt13_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>1410</x>
+          <y>520</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="DOB_FOB_graph">
+       <attribute name="title">
+        <string>Page</string>
+       </attribute>
+       <widget class="QCustomPlot" name="DOB_tau_m" native="true">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>80</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="DOB_tau_m_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>280</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_32">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>40</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>DOB_tau_m</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="DOB_tau_b_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>280</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_33">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>40</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>DOB_tau_b</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="DOB_tau_b" native="true">
+        <property name="geometry">
+         <rect>
+          <x>440</x>
+          <y>80</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FOB_f_x_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>540</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FOB_r_force" native="true">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>340</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FOB_r_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>540</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FOB_force_x" native="true">
+        <property name="geometry">
+         <rect>
+          <x>440</x>
+          <y>340</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_34">
+        <property name="geometry">
+         <rect>
+          <x>540</x>
+          <y>310</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>FOB_force_x</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_35">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>310</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>FOB_r_force</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FOB_f_y_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>1000</x>
+          <y>540</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_36">
+        <property name="geometry">
+         <rect>
+          <x>910</x>
+          <y>310</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>FOB_force_y</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FOB_force_y" native="true">
+        <property name="geometry">
+         <rect>
+          <x>810</x>
+          <y>340</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="FOB_f_z_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>1370</x>
+          <y>540</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_37">
+        <property name="geometry">
+         <rect>
+          <x>1280</x>
+          <y>310</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>FOB_force_z</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="FOB_force_z" native="true">
+        <property name="geometry">
+         <rect>
+          <x>1180</x>
+          <y>340</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="admittance_r" native="true">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>610</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_38">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>580</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>admittance_r</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="admittance_r_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>810</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="pos_r_autoscale">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>810</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(25, 35, 45);</string>
+        </property>
+        <property name="text">
+         <string>Auto Scale</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="r_pos_plot" native="true">
+        <property name="geometry">
+         <rect>
+          <x>440</x>
+          <y>610</y>
+          <width>291</width>
+          <height>191</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_39">
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>580</y>
+          <width>101</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>pos_r</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Mode_Select">
+     <attribute name="title">
+      <string>MODE SELECT</string>
+     </attribute>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1510</width>
+     <height>19</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header location="global">qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
